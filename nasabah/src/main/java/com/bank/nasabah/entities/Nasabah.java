@@ -93,7 +93,7 @@ public class Nasabah implements Serializable {
         this.ktp = ktp;
         this.hp = hp;
     }
-
+    
     public Integer getId() {
         return id;
     }

@@ -19,7 +19,7 @@ public interface NasabahService {
     
     public Optional<Nasabah>findbyId(Integer id);
     
-    public Nasabah findByKtp(String ktp);
+    public Optional<Nasabah>findByKtp(String ktp);
     
     void deleteById(Integer id);
 }

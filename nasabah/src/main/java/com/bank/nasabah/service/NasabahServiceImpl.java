@@ -37,7 +37,7 @@ public class NasabahServiceImpl implements NasabahService{
     }
     
     @Override
-    public Nasabah findByKtp(String ktp) {
+    public Optional<Nasabah>findByKtp(String ktp) {
         return nasabahrepo.findByKtp(ktp);
     }
     

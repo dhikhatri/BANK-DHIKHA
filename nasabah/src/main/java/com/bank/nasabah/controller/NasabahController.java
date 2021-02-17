@@ -46,7 +46,7 @@ public class NasabahController {
     }
     
     @GetMapping("/nasabah/ktp/{ktp}")
-    public Nasabah findByKtp(@PathVariable String ktp) {
+    public Optional<Nasabah>findByKtp(@PathVariable String ktp) {
         return nasabahservice.findByKtp(ktp);
     }
     
