@@ -37,7 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Nasabah.findByTempatlahir", query = "SELECT n FROM Nasabah n WHERE n.tempatlahir = :tempatlahir")
     , @NamedQuery(name = "Nasabah.findByTanggallahir", query = "SELECT n FROM Nasabah n WHERE n.tanggallahir = :tanggallahir")
     , @NamedQuery(name = "Nasabah.findByKtp", query = "SELECT n FROM Nasabah n WHERE n.ktp = :ktp")
-    , @NamedQuery(name = "Nasabah.findByHp", query = "SELECT n FROM Nasabah n WHERE n.hp = :hp")})
+    , @NamedQuery(name = "Nasabah.findByHp", query = "SELECT n FROM Nasabah n WHERE n.hp = :hp")
+    , @NamedQuery(name = "Nasabah.findByEmail", query = "SELECT n FROM Nasabah n WHERE n.email = :email")
+    , @NamedQuery(name = "Nasabah.findByPassword", query = "SELECT n FROM Nasabah n WHERE n.password = :password")})
 public class Nasabah implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -76,6 +78,17 @@ public class Nasabah implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "hp")
     private String hp;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Basic(optional = false)
+    //@NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "email")
+    private String email;
+    @Basic(optional = false)
+    //@NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "password")
+    private String password;
 
     public Nasabah() {
     }
@@ -84,7 +97,7 @@ public class Nasabah implements Serializable {
         this.id = id;
     }
 
-    public Nasabah(Integer id, String nama, String alamat, String tempatlahir, Date tanggallahir, String ktp, String hp) {
+    public Nasabah(Integer id, String nama, String alamat, String tempatlahir, Date tanggallahir, String ktp, String hp, String email, String password) {
         this.id = id;
         this.nama = nama;
         this.alamat = alamat;
@@ -92,8 +105,10 @@ public class Nasabah implements Serializable {
         this.tanggallahir = tanggallahir;
         this.ktp = ktp;
         this.hp = hp;
+        this.email = email;
+        this.password = password;
     }
-    
+
     public Integer getId() {
         return id;
     }
@@ -148,6 +163,22 @@ public class Nasabah implements Serializable {
 
     public void setHp(String hp) {
         this.hp = hp;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
