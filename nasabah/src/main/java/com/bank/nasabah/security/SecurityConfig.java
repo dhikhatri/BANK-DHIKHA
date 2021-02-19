@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http.csrf().disable()
+		http.httpBasic().and().csrf().disable()
                 .authorizeRequests()
 //                .antMatchers("/api/nasabah/**").access("hasRole('ROLE_USER')")
                 .antMatchers(HttpMethod.GET, "/api/nasabah/**").access("hasRole('ROLE_USER')")
